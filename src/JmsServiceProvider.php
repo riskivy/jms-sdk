@@ -26,7 +26,7 @@ class JmsServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('jms-sdk', function () {
-            return new jms;
+            return new Jms;
         });
     }
 
