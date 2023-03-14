@@ -20,6 +20,16 @@ class Jms
     }
 
     /**
+     * 自动登录终端
+     */
+    public function replay(string $id): string
+    {
+        $data = ['username' => config('jms-sdk.username'), 'next' => '/luna/replay/' . $id];
+        return str_replace('http://localhost:8080', config('jms-sdk.base_url'), ApiService::post(ApiService::SSO_LOGIN, $data)['login_url']);
+    }
+
+
+    /**
      * 会话审计
      */
     public function terminal($params): array
