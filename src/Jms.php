@@ -16,7 +16,7 @@ class Jms
         $systemUserId = self::getSystemUserId();
         $params = ['target_id' => $targetId, 'type' => 'rdp', 'system_user_id' => $systemUserId, '_' => floor(microtime(true) * 1000)];
         $data = ['username' => $userName, 'next' => '/lion/?' . http_build_query($params)];
-        return str_replace('http://localhost:8080', config('jms-sdk.base_url'), ApiService::post(ApiService::SSO_LOGIN, $data)['login_url']);
+        return str_replace('http://localhost:8080', '', ApiService::post(ApiService::SSO_LOGIN, $data)['login_url']);
     }
 
     /**
@@ -25,7 +25,7 @@ class Jms
     public function replay(string $id): string
     {
         $data = ['username' => config('jms-sdk.username'), 'next' => '/luna/replay/' . $id];
-        return str_replace('http://localhost:8080', config('jms-sdk.base_url'), ApiService::post(ApiService::SSO_LOGIN, $data)['login_url']);
+        return str_replace('http://localhost:8080', '', ApiService::post(ApiService::SSO_LOGIN, $data)['login_url']);
     }
 
 
